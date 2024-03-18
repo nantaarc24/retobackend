@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: API de Prueba Backend
+  version: 1.0.0
+  description: URL de la API para la prueba backend
+paths:
+  /recurso/{tipo}/{id}:
+    parameters:
+      - name: tipo
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Obtener recurso por ID
+      responses:
+        '200':
+          description: Éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recurso'
+    post:
+      summary: Crear un nuevo personaje
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Personaje'
+      responses:
+        '201':
+          description: Personaje creado exitosamente
+        '500':
+          description: Error al crear el personaje
+components:
+  schemas:
+    Personaje:
+      type: object
+      properties:
+        name:
+          type: string
+          description: El nombre del personaje.
+        height:
+          type: string
+          description: La altura del personaje.
+        mass:
+          type: string
+          description: El peso del personaje.
+        hair_color:
+          type: string
+          description: El color del cabello del personaje.
+        skin_color:
+          type: string
+          description: El color de la piel del personaje.
+        eye_color:
+          type: string
+          description: El color de los ojos del personaje.
+        birth_year:
+          type: string
+          description: El año de nacimiento del personaje.
+        gender:
+          type: string
+          description: El género del personaje.
+        homeworld:
+          type: string
+          description: El mundo natal del personaje.
+        films:
+          type: array
+          items:
+            type: string
+          description: Las películas en las que aparece el personaje.
+        species:
+          type: array
+          items:
+            type: string
+          description: Las especies a las que pertenece el personaje.
+        vehicles:
+          type: array
+          items:
+            type: string
+          description: Los vehículos utilizados por el personaje.
+        starships:
+          type: array
+          items:
+            type: string
+          description: Las naves estelares utilizadas por el personaje.
+        created:
+          type: string
+          format: date-time
+          description: La fecha y hora de creación del recurso en la API.
+        edited:
+          type: string
+          format: date-time
+          description: La fecha y hora de la última edición del recurso en la API.
+        url:
+          type: string
+          description: La URL del recurso en la API.
+
